@@ -1,0 +1,4 @@
+topic: ~DemandeNom()
+language: frf
+
+u:(Mon nom est _*) Ravi de te rencontrer $1 $nom=$1
