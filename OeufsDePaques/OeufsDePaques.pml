@@ -23,6 +23,8 @@
         <File name="" src="Behaviours/Algo/.metadata" />
         <File name="Algo" src="Behaviours/Algo/Algo.pml" />
         <File name="manifest" src="Behaviours/Algo/manifest.xml" />
+        <File name="old" src="old.cbl" />
+        <File name="Naomi" src="Naomi.cbl" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_frf" src="Naomi/ExampleDialog/ExampleDialog_frf.top" topicName="ExampleDialog" language="fr_FR" />
