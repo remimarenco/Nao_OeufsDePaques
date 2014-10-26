@@ -12,6 +12,7 @@
         <Dialog name="ExampleDialog" src="Naomi/ExampleDialog/ExampleDialog.dlg" />
         <Dialog name="DemandeNom" src="DemandeNom/DemandeNom.dlg" />
         <Dialog name="ExampleDialog" src="Behaviours/Walking/Principal/ExampleDialog/ExampleDialog.dlg" />
+        <Dialog name="EstCeQueTuMAimes" src="EstCeQueTuMAimes/EstCeQueTuMAimes.dlg" />
     </Dialogs>
     <Resources>
         <File name="RobotAppStore_NAO Emotions Collection! - NAO Kiss" src="AppStore/EmotionsCollections/RobotAppStore_NAO Emotions Collection! - NAO Kiss.crg" />
@@ -61,11 +62,13 @@
         <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/UpdateFriendship/box.xar" />
         <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/GetPersonFriendshipValue/box.xar" />
         <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/GetPersonInteractionValue/box.xar" />
+        <File name="choice_sentences_light" src="Behaviours/Algo/behavior_1/Aldebaran/choice_sentences_light.xml" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_frf" src="Naomi/ExampleDialog/ExampleDialog_frf.top" topicName="ExampleDialog" language="fr_FR" />
         <Topic name="DemandeNom_frf" src="DemandeNom/DemandeNom_frf.top" topicName="DemandeNom" language="fr_FR" />
         <Topic name="ExampleDialog_enu" src="Behaviours/Walking/Principal/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="enu" />
+        <Topic name="EstCeQueTuMAimes_frf" src="EstCeQueTuMAimes/EstCeQueTuMAimes_frf.top" topicName="EstCeQueTuMAimes" language="fr_FR" />
     </Topics>
     <IgnoredPaths />
 </Package>
