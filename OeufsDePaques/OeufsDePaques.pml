@@ -12,7 +12,7 @@
         <Dialog name="ExampleDialog" src="Naomi/ExampleDialog/ExampleDialog.dlg" />
         <Dialog name="DemandeNom" src="DemandeNom/DemandeNom.dlg" />
         <Dialog name="ExampleDialog" src="Behaviours/Walking/Principal/ExampleDialog/ExampleDialog.dlg" />
-        <Dialog name="EstCeQueTuMAimes" src="EstCeQueTuMAimes/EstCeQueTuMAimes.dlg" />
+        <Dialog name="EstCeQueTuMAimes&#x0D;" src="EstCeQueTuMAimes/EstCeQueTuMAimes.dlg" />
     </Dialogs>
     <Resources>
         <File name="RobotAppStore_NAO Emotions Collection! - NAO Kiss" src="AppStore/EmotionsCollections/RobotAppStore_NAO Emotions Collection! - NAO Kiss.crg" />
@@ -30,11 +30,24 @@
         <File name="Walking" src="Behaviours/Walking/Walking.pml" />
         <File name="manifest" src="Behaviours/Walking/manifest.xml" />
         <File name="Walk" src="Walk.cbl" />
+        <File name="choice_sentences_light" src="Behaviours/Algo/behavior_1/Aldebaran/choice_sentences_light.xml" />
         <File name="" src="Librairies/.metadata" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Algorithm/InteractionLoop/box.xar" />
+        <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Algorithm/xalinfo" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Classes/Person/box.xar" />
+        <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Classes/xalinfo" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Data Edit/List Edit/box.xar" />
+        <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Data Edit/xalinfo" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/Feedback Final/box.xar" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/Feedback/box.xar" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/SuggestInteraction/box.xar" />
         <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/Threshold/box.xar" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/UpdateFriendship/box.xar" />
         <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/xalinfo" />
         <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Math/Add/box.xar" />
         <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Math/xalinfo" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/GetPersonFriendshipValue/box.xar" />
+        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/GetPersonInteractionValue/box.xar" />
         <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/GetValue/box.xar" />
         <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/SetValue/box.xar" />
         <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/xalinfo" />
@@ -50,25 +63,12 @@
         <File name="xalinfo" src="Librairies/OeufsDePaques/twitter/xalinfo" />
         <File name="xalinfo" src="Librairies/OeufsDePaques/xalinfo" />
         <File name="xalinfo" src="Librairies/xalinfo" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Algorithm/InteractionLoop/box.xar" />
-        <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Algorithm/xalinfo" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Classes/Person/box.xar" />
-        <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Classes/xalinfo" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Data Edit/List Edit/box.xar" />
-        <File name="xalinfo" src="Librairies/OeufsDePaques/AlgoInteraction/Data Edit/xalinfo" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/Feedback Final/box.xar" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/Feedback/box.xar" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/SuggestInteraction/box.xar" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Flow Control/UpdateFriendship/box.xar" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/GetPersonFriendshipValue/box.xar" />
-        <File name="box" src="Librairies/OeufsDePaques/AlgoInteraction/Memory/GetPersonInteractionValue/box.xar" />
-        <File name="choice_sentences_light" src="Behaviours/Algo/behavior_1/Aldebaran/choice_sentences_light.xml" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_frf" src="Naomi/ExampleDialog/ExampleDialog_frf.top" topicName="ExampleDialog" language="fr_FR" />
         <Topic name="DemandeNom_frf" src="DemandeNom/DemandeNom_frf.top" topicName="DemandeNom" language="fr_FR" />
         <Topic name="ExampleDialog_enu" src="Behaviours/Walking/Principal/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="enu" />
-        <Topic name="EstCeQueTuMAimes_frf" src="EstCeQueTuMAimes/EstCeQueTuMAimes_frf.top" topicName="EstCeQueTuMAimes" language="fr_FR" />
+        <Topic name="EstCeQueTuMAimes_frf" src="EstCeQueTuMAimes/EstCeQueTuMAimes_frf.top" topicName="EstCeQueTuMAimes" language="frf" />
     </Topics>
     <IgnoredPaths />
 </Package>
