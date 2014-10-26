@@ -65,6 +65,33 @@
         <File name="xalinfo" src="Librairies/xalinfo" />
         <File name="interactionsbad" src="interactionsbad.cbl" />
         <File name="choice_sentences" src="Behaviours/Algo/behavior_1/behavior_1/Behaviours/Algo/behavior_1/Aldebaran/choice_sentences.xml" />
+        <File name="choice_sentences" src="Behaviours/Algo/behavior_1/behavior_1/behavior_1/Behaviours/Algo/behavior_1/Aldebaran/choice_sentences.xml" />
+        <File name="choice_sentences" src="Behaviours/Algo/behavior_1/intercations/behavior_1/Behaviours/Algo/behavior_1/Aldebaran/choice_sentences.xml" />
+        <File name="box" src="Librairies/OeufsDePaques/Interactions/Feedback/FeedbackAfterChoice/box.xar" />
+        <File name="xalinfo" src="Librairies/OeufsDePaques/Interactions/Feedback/xalinfo" />
+        <File name="choice_sentences" src="Librairies/OeufsDePaques/Interactions/Good/AdopteMoi/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="box" src="Librairies/OeufsDePaques/Interactions/Good/AdopteMoi/box.xar" />
+        <File name="choice_sentences" src="Librairies/OeufsDePaques/Interactions/Good/Interaction_EstCeQueTuMAimes/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="box" src="Librairies/OeufsDePaques/Interactions/Good/Interaction_EstCeQueTuMAimes/box.xar" />
+        <File name="xalinfo" src="Librairies/OeufsDePaques/Interactions/Good/xalinfo" />
+        <File name="interaction_neutre" src="interaction_neutre.cbl" />
+        <File name="choice_sentences" src="Behaviours/Algo/behavior_1/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="choice_sentences" src="Behaviours/Algo/behavior_1/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="choice_sentences_light" src="Behaviours/Algo/behavior_1/behavior_1/behavior_1/Aldebaran/choice_sentences_light.xml" />
+        <File name="feedback_BAD" src="feedback_BAD.cbl" />
+        <File name="choice_sentences" src="Librairies/OeufsDePaques/Interactions/Good/Interaction_EstCeQueTuMAimes/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="choice_sentences" src="Librairies/OeufsDePaques/Interactions/Good/VieGeniale/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="box" src="Librairies/OeufsDePaques/Interactions/Good/VieGeniale/box.xar" />
+        <File name="choice_sentences" src="Librairies/OeufsDePaques/Interactions/Normal/Cinema/Naomi/Naomi/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="box" src="Librairies/OeufsDePaques/Interactions/Normal/Cinema/box.xar" />
+        <File name="choice_sentences" src="Librairies/OeufsDePaques/Interactions/Normal/LoiMurphy/Naomi/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="box" src="Librairies/OeufsDePaques/Interactions/Normal/LoiMurphy/box.xar" />
+        <File name="choice_sentences" src="Librairies/OeufsDePaques/Interactions/Normal/NomEquipe/Naomi/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="box" src="Librairies/OeufsDePaques/Interactions/Normal/NomEquipe/box.xar" />
+        <File name="xalinfo" src="Librairies/OeufsDePaques/Interactions/Normal/xalinfo" />
+        <File name="choice_sentences" src="Behaviours/Algo/behavior_1/Naomi/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="choice_sentences" src="Behaviours/Algo/behavior_1/Naomi/Naomi/Naomi/Naomi/Aldebaran/choice_sentences.xml" />
+        <File name="feddback_neutre" src="feddback_neutre.cbl" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_frf" src="Naomi/ExampleDialog/ExampleDialog_frf.top" topicName="ExampleDialog" language="fr_FR" />
