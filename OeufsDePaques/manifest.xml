@@ -14,10 +14,6 @@
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>
-  <behaviorContent path="WikiQuery/WikiQuery">
-   <nature>interactive</nature>
-   <permissions/>
-  </behaviorContent>
   <behaviorContent path=".">
    <nature>interactive</nature>
    <permissions/>

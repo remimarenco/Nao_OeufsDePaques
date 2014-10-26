@@ -3,7 +3,6 @@
     <Manifest src="manifest.xml" />
     <BehaviorDescriptions>
         <BehaviorDescription name="behavior" src="Naomi" xar="behavior.xar" />
-        <BehaviorDescription name="behavior" src="WikiQuery/WikiQuery" xar="behavior.xar" />
         <BehaviorDescription name="behavior" src="." xar="behavior.xar" />
         <BehaviorDescription name="behavior" src="Behaviours/Algo/behavior_1" xar="behavior.xar" />
         <BehaviorDescription name="behavior" src="Behaviours/Walking/Principal" xar="behavior.xar" />
@@ -15,8 +14,6 @@
         <Dialog name="ExampleDialog" src="Behaviours/Walking/Principal/ExampleDialog/ExampleDialog.dlg" />
     </Dialogs>
     <Resources>
-        <File name="manifest" src="WikiQuery/manifest.xml" />
-        <File name="WikiQuery" src="WikiQuery/WikiQuery.pml" />
         <File name="RobotAppStore_NAO Emotions Collection! - NAO Kiss" src="AppStore/EmotionsCollections/RobotAppStore_NAO Emotions Collection! - NAO Kiss.crg" />
         <File name="NAOMi" src="Behaviours/NAOMi.pml" />
         <File name="Reco_visuelle_03" src="Behaviours/Reco_visuelle_03.pml" />
