@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Folder expanded="yes">
+    <Node name="ApplisExistantes" />
+    <Node name="LiaisonsApplis" />
+    <Node name="Reconnaissance" />
+    <Node name="Trajectoire" />
+    <Node name="twitter" />
+    <Node name="Interactions" />
+    <Node name="AlgoInteraction" />
+</Folder>

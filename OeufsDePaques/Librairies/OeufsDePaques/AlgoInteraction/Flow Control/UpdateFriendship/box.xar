@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ChoregrapheBox xar_version="3">
+    <Box name="root" id="7" localization="8" tooltip="Updates Person friendship with given value&#x0A;Also increments interaction counter" x="1280" y="268">
+        <bitmap>media/images/box/sensors/STM.png</bitmap>
+        <script language="4">
+            <content>
+                <![CDATA[]]>
+</content>
+        </script>
+        <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+        <Input name="input_value" type="2" type_size="1" nature="2" inner="0" tooltip="Value to update score with" id="2" />
+        <Input name="input_name" type="3" type_size="1" nature="2" inner="0" tooltip="Person name" id="3" />
+        <Output name="output_InteractionCounter" type="2" type_size="1" nature="2" inner="0" tooltip="Interaction counter of Person" id="4" />
+        <Timeline enable="0">
+            <BehaviorLayer name="behavior_layer1">
+                <BehaviorKeyframe name="keyframe1" index="1">
+                    <Diagram scale="84.0896">
+                        <Box name="GetPersonFriendshipValue" id="1" localization="8" tooltip="Gets friendship of Person" x="249" y="338">
+                            <bitmap>media/images/box/sensors/STM.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_input_Person(self, p):
+        dRes = p[1]
+
+        self.output_Friendship(dRes)
+        pass]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="input_Person" type="0" type_size="1" nature="1" inner="0" tooltip="Person " id="2" />
+                            <Output name="output_Friendship" type="2" type_size="1" nature="2" inner="0" tooltip="Friendship Value" id="3" />
+                        </Box>
+                        <Box name="GetValue" id="11" localization="8" tooltip="Recoves value given in input from Memory" x="77" y="210">
+                            <bitmap>media/images/box/sensors/STM.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="onInput" type="3" type_size="1" nature="2" inner="0" tooltip="Value to recover from Memory" id="2" />
+                            <Output name="output" type="0" type_size="1" nature="2" inner="0" tooltip="" id="3" />
+                            <Timeline enable="0">
+                                <BehaviorLayer name="behavior_layer1">
+                                    <BehaviorKeyframe name="keyframe1" index="1">
+                                        <Diagram>
+                                            <Box name="Log" id="6" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="696" y="411">
+                                                <bitmap>media/images/box/print.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        #~ puts code for box initialization here
+        pass
+
+    def onUnload(self):
+        #~ puts code for box cleanup here
+        pass
+
+    def onInput_message(self, p):
+        sPriority = self.getParameter("Priority")
+        sMessage = self.getParameter("Message prefix")
+        if( sMessage != "" and p != None ):
+            sMessage += ": "
+        if( p != None ):
+            sMessage += str(p)
+        if( sPriority == "Fatal" ):
+            self.logger.fatal( sMessage )
+        elif( sPriority == "Error" ):
+            self.logger.error( sMessage )
+        elif( sPriority == "Warning" ):
+            self.logger.warning( sMessage )
+        elif( sPriority == "Info" ):
+            self.logger.info( sMessage )
+        elif( sPriority == "Debug" ):
+            self.logger.debug( sMessage )
+        self.onDone()]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="message" type="0" type_size="1" nature="1" inner="0" tooltip='The message to print or a &quot;Bang&quot; to only print the message set as parameter.' id="2" />
+                                                <Output name="onDone" type="1" type_size="1" nature="2" inner="0" tooltip="Signal sent when box behavior is finished." id="3" />
+                                                <Parameter name="Message prefix" inherits_from_parent="0" content_type="3" value="Message text" default_value="Message text" custom_choice="0" tooltip="Enter the text you want to print before the input message." id="4" />
+                                                <Parameter name="Priority" inherits_from_parent="0" content_type="3" value="Info" default_value="Info" custom_choice="0" tooltip="Enter the priority of your message. If you select error, the box will get red when it will be stimulated." id="5">
+                                                    <Choice value="Fatal" />
+                                                    <Choice value="Error" />
+                                                    <Choice value="Warning" />
+                                                    <Choice value="Info" />
+                                                    <Choice value="Debug" />
+                                                </Parameter>
+                                            </Box>
+                                            <Box name="GetDataName" id="9" localization="8" tooltip="Recover value specified by Key in Memory" x="448" y="281">
+                                                <bitmap>media/images/box/box-python-script.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        self.memory = ALProxy("ALMemory")
+        self.key = self.getParameter( "defaultKey" )
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        self.memory = None
+        pass
+
+    def onInput_onStart(self, p):
+        self.key = p if p != "" else self.key
+
+        result = self.memory.getData( self.key )
+        self.onStopped( result ) #activate the output of the box
+        pass
+
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Key to recover value from memory" id="2" />
+                                                <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                                                <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Value returned from memory" id="4" />
+                                                <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Display error message if an error ocurred" id="5" />
+                                                <Parameter name="defaultKey" inherits_from_parent="0" content_type="3" value="Jon" default_value="Jon" custom_choice="0" tooltip="Default Value to recover from Memory" id="6" />
+                                            </Box>
+                                            <Link inputowner="6" indexofinput="2" outputowner="9" indexofoutput="4" />
+                                            <Link inputowner="9" indexofinput="2" outputowner="0" indexofoutput="2" />
+                                            <Link inputowner="0" indexofinput="3" outputowner="9" indexofoutput="4" />
+                                        </Diagram>
+                                    </BehaviorKeyframe>
+                                </BehaviorLayer>
+                            </Timeline>
+                        </Box>
+                        <Box name="Add" id="9" localization="8" tooltip="Adds two terms and return their sum" x="454" y="329">
+                            <bitmap>media/images/box/box-script.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        self.rFirstTerm  = 0.0
+        self.rSecondTerm = 0.0
+        self.bFirstTerm = False
+        self.bSecondTerm = False
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_FirstTerm(self, rVal):
+        self.rFirstTerm = float(rVal)
+        self.bFirstTerm = True
+        self.process()
+        pass
+
+    def onInput_SecondTerm(self, rVal):
+        self.rSecondTerm = float(rVal)
+        self.bSecondTerm = True
+        self.process()
+        pass
+
+    def process(self):
+        if self.bFirstTerm and self.bSecondTerm :
+            rRes = self.rFirstTerm + self.rSecondTerm
+            self.bFirstTerm  = False
+            self.bSecondTerm = False
+            self.output_Sum( rRes )]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="FirstTerm" type="2" type_size="1" nature="1" inner="0" tooltip="First sum term" id="2" />
+                            <Input name="SecondTerm" type="2" type_size="1" nature="1" inner="0" tooltip="Second sum term" id="3" />
+                            <Output name="output_Sum" type="2" type_size="1" nature="2" inner="0" tooltip="Addition of the two terms" id="4" />
+                        </Box>
+                        <Box name="SetValue" id="8" localization="8" tooltip="Stores value in memory on key" x="671" y="277">
+                            <bitmap>media/images/box/sensors/STM.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="Switch Case_onStart" type="0" type_size="1" nature="2" inner="0" tooltip="This input has been automatically generated&#x0A;by converting several boxes into a single box." id="2" />
+                            <Input name="CreateDataName_name" type="3" type_size="1" nature="2" inner="0" tooltip="This input has been automatically generated&#x0A;by converting several boxes into a single box." id="3" />
+                            <Output name="output" type="1" type_size="1" nature="2" inner="0" tooltip="" id="4" />
+                            <Timeline enable="0">
+                                <BehaviorLayer name="behavior_layer1">
+                                    <BehaviorKeyframe name="keyframe1" index="1">
+                                        <Diagram scale="59.4604">
+                                            <Box name="Get Data" id="3" localization="8" tooltip="Retrieves from NAOqi&apos;s shared memory the given value at the given key." x="798" y="269">
+                                                <bitmap>media/images/box/sensors/STM.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        pass
+
+    def onLoad(self):
+        self.memory = ALProxy("ALMemory")
+
+    def onUnload(self):
+        self.memory = None
+
+    def onInput_onStart(self):
+        result = self.memory.getData(self.getParameter("key"))
+        self.onStopped(result)
+
+    def onInput_onStop(self):
+        self.onUnload() #~ it is recommended to call onUnload of this box in a onStop method, as the code written in onUnload is used to stop the box as well
+        pass]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+                                                <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+                                                <Output name="onStopped" type="0" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished. It contains the retrieved value from ALMemory." id="4" />
+                                                <Output name="onError" type="3" type_size="1" nature="1" inner="0" tooltip="Output when error is raised by the behavior. Contains the error message." id="5" />
+                                                <Parameter name="key" inherits_from_parent="0" content_type="3" value="Vincent" default_value="MyApplication/MyData" custom_choice="0" tooltip="" id="6" />
+                                            </Box>
+                                            <Box name="Log" id="6" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="1100" y="263">
+                                                <bitmap>media/images/box/print.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        #~ puts code for box initialization here
+        pass
+
+    def onUnload(self):
+        #~ puts code for box cleanup here
+        pass
+
+    def onInput_message(self, p):
+        sPriority = self.getParameter("Priority")
+        sMessage = self.getParameter("Message prefix")
+        if( sMessage != "" and p != None ):
+            sMessage += ": "
+        if( p != None ):
+            sMessage += str(p)
+        if( sPriority == "Fatal" ):
+            self.logger.fatal( sMessage )
+        elif( sPriority == "Error" ):
+            self.logger.error( sMessage )
+        elif( sPriority == "Warning" ):
+            self.logger.warning( sMessage )
+        elif( sPriority == "Info" ):
+            self.logger.info( sMessage )
+        elif( sPriority == "Debug" ):
+            self.logger.debug( sMessage )
+        self.onDone()]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="message" type="0" type_size="1" nature="1" inner="0" tooltip='The message to print or a &quot;Bang&quot; to only print the message set as parameter.' id="2" />
+                                                <Output name="onDone" type="1" type_size="1" nature="2" inner="0" tooltip="Signal sent when box behavior is finished." id="3" />
+                                                <Parameter name="Message prefix" inherits_from_parent="0" content_type="3" value="The person" default_value="Message text" custom_choice="0" tooltip="Enter the text you want to print before the input message." id="4" />
+                                                <Parameter name="Priority" inherits_from_parent="0" content_type="3" value="Info" default_value="Info" custom_choice="0" tooltip="Enter the priority of your message. If you select error, the box will get red when it will be stimulated." id="5">
+                                                    <Choice value="Fatal" />
+                                                    <Choice value="Error" />
+                                                    <Choice value="Warning" />
+                                                    <Choice value="Info" />
+                                                    <Choice value="Debug" />
+                                                </Parameter>
+                                            </Box>
+                                            <Box name="CreateDataName" id="1" localization="8" tooltip="This box contains a basic python script and can be used to create any python script box you would like.&#x0A;&#x0A;To edit its script, double-click on it." x="355" y="401">
+                                                <bitmap>media/images/box/box-python-script.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        self.key   = self.getParameter( "defaultKey" )
+        self.dData = 0.0
+
+        self.bKey  = False
+        self.bData = False
+
+        self.memory = ALProxy("ALMemory")
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        self.memory = None
+        pass
+
+    def onInput_input_data(self, p):
+        self.dData = p
+        self.bData = True
+        self.process()
+        pass
+
+    def onInput_input_key(self, p):
+        self.key  = p if p != "" else self.key
+        self.bKey = True
+        self.process()
+        pass
+
+    def process(self):
+        if self.bKey and self.bData :
+            self.memory.insertData( self.key, self.dData )
+
+            self.bKey  = False
+            self.bData = False
+
+            self.output_Data(self.dData)]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="input_data" type="0" type_size="1" nature="1" inner="0" tooltip="Data to store in Memory" id="2" />
+                                                <Input name="input_key" type="3" type_size="1" nature="1" inner="0" tooltip="Key to store it at" id="3" />
+                                                <Output name="output_Data" type="0" type_size="1" nature="2" inner="0" tooltip="Data stored in Memory" id="4" />
+                                                <Parameter name="defaultKey" inherits_from_parent="0" content_type="3" value="Jon" default_value="Jon" custom_choice="0" tooltip="Default Key to store in Memory" id="5" />
+                                            </Box>
+                                            <Link inputowner="6" indexofinput="2" outputowner="3" indexofoutput="4" />
+                                            <Link inputowner="0" indexofinput="4" outputowner="6" indexofoutput="3" />
+                                            <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="2" />
+                                            <Link inputowner="1" indexofinput="3" outputowner="0" indexofoutput="3" />
+                                            <Link inputowner="3" indexofinput="2" outputowner="1" indexofoutput="4" />
+                                        </Diagram>
+                                    </BehaviorKeyframe>
+                                </BehaviorLayer>
+                            </Timeline>
+                        </Box>
+                        <Box name="GetPersonInteractionValue" id="3" localization="8" tooltip="Gets number of interactions of Person" x="286" y="137">
+                            <bitmap>media/images/box/sensors/STM.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_input_Person(self, p):
+        dRes = p[2]
+
+        self.output_Interaction(dRes)
+        pass]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="input_Person" type="0" type_size="1" nature="1" inner="0" tooltip="Person " id="2" />
+                            <Output name="output_Interaction" type="2" type_size="1" nature="2" inner="0" tooltip="Friendship Value" id="3" />
+                        </Box>
+                        <Box name="Add (1)" id="4" localization="8" tooltip="Adds two terms and return their sum" x="452" y="40">
+                            <bitmap>media/images/box/box-script.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        self.rFirstTerm  = 0.0
+        self.rSecondTerm = 0.0
+        self.bFirstTerm = False
+        self.bSecondTerm = False
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_FirstTerm(self, rVal):
+        self.rFirstTerm = float(rVal)
+        self.bFirstTerm = True
+        self.process()
+        pass
+
+    def onInput_SecondTerm(self, rVal):
+        self.rSecondTerm = float(rVal)
+        self.bSecondTerm = True
+        self.process()
+        pass
+
+    def process(self):
+        if self.bFirstTerm and self.bSecondTerm :
+            rRes = self.rFirstTerm + self.rSecondTerm
+            self.bFirstTerm  = False
+            self.bSecondTerm = False
+            self.output_Sum( rRes )]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="FirstTerm" type="2" type_size="1" nature="1" inner="0" tooltip="First sum term" id="2" />
+                            <Input name="SecondTerm" type="2" type_size="1" nature="1" inner="0" tooltip="Second sum term" id="3" />
+                            <Output name="output_Sum" type="2" type_size="1" nature="2" inner="0" tooltip="Addition of the two terms" id="4" />
+                        </Box>
+                        <Box name="Number Edit" id="5" localization="8" tooltip="Send the number you entered when the input is stimulated." plugin="numberedit_plugin" x="269" y="24">
+                            <bitmap>media/images/box/interaction/vocabulary.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[# /!\ Generated content. Do not edit!
+class MyClass(GeneratedClass):
+	def __init__(self):
+		GeneratedClass.__init__(self)
+
+	def onInput_onStart(self):
+		self.onStopped(1)]]>
+</content>
+                            </script>
+                            <pluginContent>
+                                <number>1</number>
+                            </pluginContent>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" />
+                            <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the number on the output." id="2" />
+                            <Output name="onStopped" type="2" type_size="1" nature="2" inner="0" tooltip="The number you entered." id="3" />
+                        </Box>
+                        <Box name="Person" id="6" localization="8" tooltip="Describes a person" x="675" y="87">
+                            <bitmap>media/images/box/box-python-script.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        self.name  = self.getParameter( "defaultName")
+        self.friendship = self.getParameter( "defaultFriendship")
+        self.interactions = self.getParameter( "defaultInteractions")
+
+        self.bName         = False
+        self.bFriendship   = False
+        self.bInteractions = False
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_input_name(self, p):
+        self.name  = p if p != "" else self.name
+        self.bName = True
+        self.process()
+        pass
+
+    def onInput_input_friendship(self, p):
+        self.friendship  = max(min(p,10),0) if p != -1 else self.friendship
+        self.bFriendship = True
+        self.process()
+        pass
+
+    def onInput_input_interactions(self, p):
+        self.interactions  = p if p != -1 else self.interactions
+        self.bInteractions = True
+        self.process()
+        pass
+
+    def process(self):
+        if self.bName and self.bFriendship and self.bInteractions:
+            dPerson = [ self.name, self.friendship, self.interactions ]
+
+            self.bName         = False
+            self.bFriendship   = False
+            self.bInteractions = False
+
+            self.output_Person( dPerson )
+            self.output_Name( self.name )]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="input_name" type="3" type_size="1" nature="1" inner="0" tooltip="Person name" id="2" />
+                            <Input name="input_interactions" type="2" type_size="1" nature="1" inner="0" tooltip="Interactions made with Player" id="3" />
+                            <Input name="input_friendship" type="2" type_size="1" nature="1" inner="0" tooltip="Frienship level " id="4" />
+                            <Output name="output_Person" type="0" type_size="1" nature="2" inner="0" tooltip="The Person reference" id="5" />
+                            <Output name="output_Name" type="3" type_size="1" nature="2" inner="0" tooltip="Person name" id="6" />
+                            <Parameter name="defaultName" inherits_from_parent="0" content_type="3" value="Vincent" default_value="Jon" custom_choice="0" tooltip="Person default name" id="7" />
+                            <Parameter name="defaultFriendship" inherits_from_parent="0" content_type="1" value="5" default_value="5" min="0" max="10" tooltip="Default Friendship level" id="8" />
+                            <Parameter name="defaultInteractions" inherits_from_parent="0" content_type="1" value="0" default_value="0" min="0" max="3" tooltip="Default number of interactions" id="9" />
+                        </Box>
+                        <Box name="GetPersonInteractionValue (1)" id="2" localization="8" tooltip="Gets number of interactions of Person" x="888" y="153">
+                            <bitmap>media/images/box/sensors/STM.png</bitmap>
+                            <script language="4">
+                                <content>
+                                    <![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_input_Person(self, p):
+        dRes = p[2]
+
+        self.output_Interaction(dRes)
+        pass]]>
+</content>
+                            </script>
+                            <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                            <Input name="input_Person" type="0" type_size="1" nature="1" inner="0" tooltip="Person " id="2" />
+                            <Output name="output_Interaction" type="2" type_size="1" nature="2" inner="0" tooltip="Friendship Value" id="3" />
+                        </Box>
+                        <Link inputowner="11" indexofinput="2" outputowner="0" indexofoutput="3" />
+                        <Link inputowner="1" indexofinput="2" outputowner="11" indexofoutput="3" />
+                        <Link inputowner="9" indexofinput="2" outputowner="0" indexofoutput="2" />
+                        <Link inputowner="9" indexofinput="3" outputowner="1" indexofoutput="3" />
+                        <Link inputowner="3" indexofinput="2" outputowner="11" indexofoutput="3" />
+                        <Link inputowner="4" indexofinput="3" outputowner="3" indexofoutput="3" />
+                        <Link inputowner="5" indexofinput="2" outputowner="11" indexofoutput="3" />
+                        <Link inputowner="4" indexofinput="2" outputowner="5" indexofoutput="3" />
+                        <Link inputowner="6" indexofinput="2" outputowner="0" indexofoutput="3" />
+                        <Link inputowner="6" indexofinput="3" outputowner="4" indexofoutput="4" />
+                        <Link inputowner="6" indexofinput="4" outputowner="9" indexofoutput="4" />
+                        <Link inputowner="8" indexofinput="2" outputowner="6" indexofoutput="5" />
+                        <Link inputowner="8" indexofinput="3" outputowner="6" indexofoutput="6" />
+                        <Link inputowner="2" indexofinput="2" outputowner="6" indexofoutput="5" />
+                        <Link inputowner="0" indexofinput="4" outputowner="2" indexofoutput="3" />
+                    </Diagram>
+                </BehaviorKeyframe>
+            </BehaviorLayer>
+        </Timeline>
+    </Box>
+</ChoregrapheBox>
