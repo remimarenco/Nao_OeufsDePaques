@@ -63,6 +63,8 @@
         <File name="xalinfo" src="Librairies/OeufsDePaques/twitter/xalinfo" />
         <File name="xalinfo" src="Librairies/OeufsDePaques/xalinfo" />
         <File name="xalinfo" src="Librairies/xalinfo" />
+        <File name="interactionsbad" src="interactionsbad.cbl" />
+        <File name="choice_sentences" src="Behaviours/Algo/behavior_1/behavior_1/Behaviours/Algo/behavior_1/Aldebaran/choice_sentences.xml" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_frf" src="Naomi/ExampleDialog/ExampleDialog_frf.top" topicName="ExampleDialog" language="fr_FR" />
