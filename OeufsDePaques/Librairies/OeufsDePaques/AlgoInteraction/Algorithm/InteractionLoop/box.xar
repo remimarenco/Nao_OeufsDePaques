@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ChoregrapheBox xar_version="3">
-    <Box name="root" id="10" localization="8" tooltip="Loop and Suggest interactions with a given person" x="572" y="359">
+    <Box name="root" id="10" localization="8" tooltip="Loop and Suggest interactions with a given person" x="962" y="259">
         <bitmap>media/images/box/tracker/basicawareness.png</bitmap>
         <script language="4">
             <content>
@@ -930,8 +930,8 @@ class MyClass(GeneratedClass):
                             <Timeline enable="0">
                                 <BehaviorLayer name="behavior_layer1">
                                     <BehaviorKeyframe name="keyframe1" index="1">
-                                        <Diagram>
-                                            <Box name="Threshold" id="18" localization="8" tooltip="Determines if given value is between defined thresholds (3 thresholds are proposed, more can be added via Coregraphe)" x="54" y="321">
+                                        <Diagram scale="84.0896">
+                                            <Box name="Threshold" id="18" localization="8" tooltip="Determines if given value is between defined thresholds (3 thresholds are proposed, more can be added via Coregraphe)" x="63" y="323">
                                                 <bitmap>media/images/box/interaction/choice.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -1382,7 +1382,7 @@ class MyClass(GeneratedClass):
                                                     </BehaviorLayer>
                                                 </Timeline>
                                             </Box>
-                                            <Box name="Switch Case" id="1" localization="8" tooltip="Test input value and stimulate the output matching to this value. If there is no&#x0A;matching output, the default output (onDefault) is stimulated.&#x0A;&#x0A;You can edit a case by left double-clicking on the line. You can add a&#x0A;case by right clicking on a line and selecting &apos;Insert a row&apos;. You can delete&#x0A;a case by right clicking on a line and selecting &apos;Remove a row&apos;." plugin="dispatcher_plugin" x="269" y="311">
+                                            <Box name="Suggestion interaction selon score" id="1" localization="8" tooltip="Test input value and stimulate the output matching to this value. If there is no&#x0A;matching output, the default output (onDefault) is stimulated.&#x0A;&#x0A;You can edit a case by left double-clicking on the line. You can add a&#x0A;case by right clicking on a line and selecting &apos;Insert a row&apos;. You can delete&#x0A;a case by right clicking on a line and selecting &apos;Remove a row&apos;." plugin="dispatcher_plugin" x="269" y="311">
                                                 <bitmap>media/images/box/interaction/choice.png</bitmap>
                                                 <script language="4">
                                                     <content>
@@ -1430,162 +1430,6 @@ class MyClass(GeneratedClass):
                                                 <Output name="output_1" type="0" type_size="1" nature="2" inner="0" tooltip="This IO has been automatically added by box. Read box tooltip for more information." id="4" />
                                                 <Output name="output_2" type="0" type_size="1" nature="2" inner="0" tooltip="This IO has been automatically added by box. Read box tooltip for more information." id="5" />
                                                 <Output name="output_3" type="0" type_size="1" nature="2" inner="0" tooltip="This IO has been automatically added by box. Read box tooltip for more information." id="6" />
-                                            </Box>
-                                            <Box name="Random Int." id="2" localization="8" tooltip="Generate a random integer between a min number and a max number set as&#x0A;parameters.&#x0A;Note that the min and max numbers are included in the range of possible values." x="616" y="79">
-                                                <bitmap>media/images/box/box-script.png</bitmap>
-                                                <script language="4">
-                                                    <content>
-                                                        <![CDATA[import random
-
-class MyClass(GeneratedClass):
-    def __init__(self):
-        GeneratedClass.__init__(self, False)
-
-    def onLoad(self):
-        # attributes needed in shuffle mode
-        self.nMax = 1
-        self.nMin = 0
-        self.nIndex = self.nMax - self.nMin
-        self.aShuffled = []
-
-    def onUnload(self):
-         #puts code for box cleanup here
-        pass
-
-    def onInput_onStart(self):
-        nMax = self.getParameter("Max value")
-        nMin = self.getParameter("Min value")
-        if( nMin > nMax ):
-            temp = nMin
-            nMin = nMax
-            nMax = temp
-        # if shuffle
-        if( self.getParameter("Shuffle") ):
-            self.nIndex += 1
-            if( self.nIndex > self.nMax - self.nMin or nMax != self.nMax or nMin != self.nMin ):
-                self.nMax = nMax
-                self.nMin = nMin
-                self.nIndex = 0
-                self.aShuffled = []
-                for i in range( nMin, nMax + 1 ):
-                    self.aShuffled.insert( random.randint(0, len(self.aShuffled)), i )
-            self.output_RandomValue( self.aShuffled[self.nIndex] )
-        # if not shuffle
-        else:
-            self.nIndex = self.nMax - self.nMin
-            self.output_RandomValue( random.randint( nMin, nMax ) )]]>
-</content>
-                                                </script>
-                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
-                                                <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="Generate a random integer." id="2" />
-                                                <Output name="output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="The random value obtained." id="3" />
-                                                <Parameter name="Min value" inherits_from_parent="0" content_type="1" value="1" default_value="0" min="0" max="1000" tooltip="The minimum value you can get." id="4" />
-                                                <Parameter name="Max value" inherits_from_parent="0" content_type="1" value="2" default_value="10" min="0" max="1000" tooltip="The maximum number you can get." id="5" />
-                                                <Parameter name="Shuffle" inherits_from_parent="0" content_type="0" value="0" default_value="0" tooltip="When this option is selected the box will give all the numbers between min and&#x0A;max before giving the same number twice." id="6" />
-                                            </Box>
-                                            <Box name="Random Int. (1)" id="3" localization="8" tooltip="Generate a random integer between a min number and a max number set as&#x0A;parameters.&#x0A;Note that the min and max numbers are included in the range of possible values." x="623" y="279">
-                                                <bitmap>media/images/box/box-script.png</bitmap>
-                                                <script language="4">
-                                                    <content>
-                                                        <![CDATA[import random
-
-class MyClass(GeneratedClass):
-    def __init__(self):
-        GeneratedClass.__init__(self, False)
-
-    def onLoad(self):
-        # attributes needed in shuffle mode
-        self.nMax = 1
-        self.nMin = 0
-        self.nIndex = self.nMax - self.nMin
-        self.aShuffled = []
-
-    def onUnload(self):
-         #puts code for box cleanup here
-        pass
-
-    def onInput_onStart(self):
-        nMax = self.getParameter("Max value")
-        nMin = self.getParameter("Min value")
-        if( nMin > nMax ):
-            temp = nMin
-            nMin = nMax
-            nMax = temp
-        # if shuffle
-        if( self.getParameter("Shuffle") ):
-            self.nIndex += 1
-            if( self.nIndex > self.nMax - self.nMin or nMax != self.nMax or nMin != self.nMin ):
-                self.nMax = nMax
-                self.nMin = nMin
-                self.nIndex = 0
-                self.aShuffled = []
-                for i in range( nMin, nMax + 1 ):
-                    self.aShuffled.insert( random.randint(0, len(self.aShuffled)), i )
-            self.output_RandomValue( self.aShuffled[self.nIndex] )
-        # if not shuffle
-        else:
-            self.nIndex = self.nMax - self.nMin
-            self.output_RandomValue( random.randint( nMin, nMax ) )]]>
-</content>
-                                                </script>
-                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
-                                                <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="Generate a random integer." id="2" />
-                                                <Output name="output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="The random value obtained." id="3" />
-                                                <Parameter name="Min value" inherits_from_parent="0" content_type="1" value="2" default_value="0" min="0" max="1000" tooltip="The minimum value you can get." id="4" />
-                                                <Parameter name="Max value" inherits_from_parent="0" content_type="1" value="3" default_value="10" min="0" max="1000" tooltip="The maximum number you can get." id="5" />
-                                                <Parameter name="Shuffle" inherits_from_parent="0" content_type="0" value="0" default_value="0" tooltip="When this option is selected the box will give all the numbers between min and&#x0A;max before giving the same number twice." id="6" />
-                                            </Box>
-                                            <Box name="Random Int. (2)" id="4" localization="8" tooltip="Generate a random integer between a min number and a max number set as&#x0A;parameters.&#x0A;Note that the min and max numbers are included in the range of possible values." x="620" y="465">
-                                                <bitmap>media/images/box/box-script.png</bitmap>
-                                                <script language="4">
-                                                    <content>
-                                                        <![CDATA[import random
-
-class MyClass(GeneratedClass):
-    def __init__(self):
-        GeneratedClass.__init__(self, False)
-
-    def onLoad(self):
-        # attributes needed in shuffle mode
-        self.nMax = 1
-        self.nMin = 0
-        self.nIndex = self.nMax - self.nMin
-        self.aShuffled = []
-
-    def onUnload(self):
-         #puts code for box cleanup here
-        pass
-
-    def onInput_onStart(self):
-        nMax = self.getParameter("Max value")
-        nMin = self.getParameter("Min value")
-        if( nMin > nMax ):
-            temp = nMin
-            nMin = nMax
-            nMax = temp
-        # if shuffle
-        if( self.getParameter("Shuffle") ):
-            self.nIndex += 1
-            if( self.nIndex > self.nMax - self.nMin or nMax != self.nMax or nMin != self.nMin ):
-                self.nMax = nMax
-                self.nMin = nMin
-                self.nIndex = 0
-                self.aShuffled = []
-                for i in range( nMin, nMax + 1 ):
-                    self.aShuffled.insert( random.randint(0, len(self.aShuffled)), i )
-            self.output_RandomValue( self.aShuffled[self.nIndex] )
-        # if not shuffle
-        else:
-            self.nIndex = self.nMax - self.nMin
-            self.output_RandomValue( random.randint( nMin, nMax ) )]]>
-</content>
-                                                </script>
-                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
-                                                <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="Generate a random integer." id="2" />
-                                                <Output name="output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="The random value obtained." id="3" />
-                                                <Parameter name="Min value" inherits_from_parent="0" content_type="1" value="3" default_value="0" min="0" max="1000" tooltip="The minimum value you can get." id="4" />
-                                                <Parameter name="Max value" inherits_from_parent="0" content_type="1" value="3" default_value="10" min="0" max="1000" tooltip="The maximum number you can get." id="5" />
-                                                <Parameter name="Shuffle" inherits_from_parent="0" content_type="0" value="0" default_value="0" tooltip="When this option is selected the box will give all the numbers between min and&#x0A;max before giving the same number twice." id="6" />
                                             </Box>
                                             <Box name="Log" id="5" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="1043" y="398">
                                                 <bitmap>media/images/box/print.png</bitmap>
@@ -1635,18 +1479,234 @@ class MyClass(GeneratedClass):
                                                     <Choice value="Debug" />
                                                 </Parameter>
                                             </Box>
+                                            <Box name="Interactions BAD" id="6" localization="8" tooltip="Enter description here" x="616" y="79">
+                                                <bitmap>media/images/box/box-diagram.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="Interactions BAD_onStart" type="1" type_size="1" nature="2" inner="0" tooltip="This input has been automatically generated&#x0A;by converting several boxes into a single box." id="2" />
+                                                <Output name="InteractionsBAD_output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="This output has been automatically generated&#x0A;by converting several boxes into a single box." id="3" />
+                                                <Timeline enable="0">
+                                                    <BehaviorLayer name="behavior_layer1">
+                                                        <BehaviorKeyframe name="keyframe1" index="1">
+                                                            <Diagram>
+                                                                <Box name="Interactions BAD" id="2" localization="8" tooltip="Generate a random integer between a min number and a max number set as&#x0A;parameters.&#x0A;Note that the min and max numbers are included in the range of possible values." x="616" y="79">
+                                                                    <bitmap>media/images/box/box-script.png</bitmap>
+                                                                    <script language="4">
+                                                                        <content>
+                                                                            <![CDATA[import random
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        # attributes needed in shuffle mode
+        self.nMax = 1
+        self.nMin = 0
+        self.nIndex = self.nMax - self.nMin
+        self.aShuffled = []
+
+    def onUnload(self):
+         #puts code for box cleanup here
+        pass
+
+    def onInput_onStart(self):
+        nMax = self.getParameter("Max value")
+        nMin = self.getParameter("Min value")
+        if( nMin > nMax ):
+            temp = nMin
+            nMin = nMax
+            nMax = temp
+        # if shuffle
+        if( self.getParameter("Shuffle") ):
+            self.nIndex += 1
+            if( self.nIndex > self.nMax - self.nMin or nMax != self.nMax or nMin != self.nMin ):
+                self.nMax = nMax
+                self.nMin = nMin
+                self.nIndex = 0
+                self.aShuffled = []
+                for i in range( nMin, nMax + 1 ):
+                    self.aShuffled.insert( random.randint(0, len(self.aShuffled)), i )
+            self.output_RandomValue( self.aShuffled[self.nIndex] )
+        # if not shuffle
+        else:
+            self.nIndex = self.nMax - self.nMin
+            self.output_RandomValue( random.randint( nMin, nMax ) )]]>
+</content>
+                                                                    </script>
+                                                                    <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                                    <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="Generate a random integer." id="2" />
+                                                                    <Output name="output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="The random value obtained." id="3" />
+                                                                    <Parameter name="Min value" inherits_from_parent="0" content_type="1" value="1" default_value="0" min="0" max="1000" tooltip="The minimum value you can get." id="4" />
+                                                                    <Parameter name="Max value" inherits_from_parent="0" content_type="1" value="2" default_value="10" min="0" max="1000" tooltip="The maximum number you can get." id="5" />
+                                                                    <Parameter name="Shuffle" inherits_from_parent="0" content_type="0" value="0" default_value="0" tooltip="When this option is selected the box will give all the numbers between min and&#x0A;max before giving the same number twice." id="6" />
+                                                                </Box>
+                                                                <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="2" />
+                                                                <Link inputowner="0" indexofinput="3" outputowner="2" indexofoutput="3" />
+                                                            </Diagram>
+                                                        </BehaviorKeyframe>
+                                                    </BehaviorLayer>
+                                                </Timeline>
+                                            </Box>
+                                            <Box name="Interactions NEUTRAL" id="2" localization="8" tooltip="Enter description here" x="623" y="279">
+                                                <bitmap>media/images/box/box-diagram.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="Interactions NEUTRAL_onStart_2" type="1" type_size="1" nature="2" inner="0" tooltip="This input has been automatically generated&#x0A;by converting several boxes into a single box." id="2" />
+                                                <Output name="InteractionsNEUTRAL_output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="This output has been automatically generated&#x0A;by converting several boxes into a single box." id="3" />
+                                                <Timeline enable="0">
+                                                    <BehaviorLayer name="behavior_layer1">
+                                                        <BehaviorKeyframe name="keyframe1" index="1">
+                                                            <Diagram>
+                                                                <Box name="Interactions NEUTRAL" id="3" localization="8" tooltip="Generate a random integer between a min number and a max number set as&#x0A;parameters.&#x0A;Note that the min and max numbers are included in the range of possible values." x="623" y="279">
+                                                                    <bitmap>media/images/box/box-script.png</bitmap>
+                                                                    <script language="4">
+                                                                        <content>
+                                                                            <![CDATA[import random
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        # attributes needed in shuffle mode
+        self.nMax = 1
+        self.nMin = 0
+        self.nIndex = self.nMax - self.nMin
+        self.aShuffled = []
+
+    def onUnload(self):
+         #puts code for box cleanup here
+        pass
+
+    def onInput_onStart(self):
+        nMax = self.getParameter("Max value")
+        nMin = self.getParameter("Min value")
+        if( nMin > nMax ):
+            temp = nMin
+            nMin = nMax
+            nMax = temp
+        # if shuffle
+        if( self.getParameter("Shuffle") ):
+            self.nIndex += 1
+            if( self.nIndex > self.nMax - self.nMin or nMax != self.nMax or nMin != self.nMin ):
+                self.nMax = nMax
+                self.nMin = nMin
+                self.nIndex = 0
+                self.aShuffled = []
+                for i in range( nMin, nMax + 1 ):
+                    self.aShuffled.insert( random.randint(0, len(self.aShuffled)), i )
+            self.output_RandomValue( self.aShuffled[self.nIndex] )
+        # if not shuffle
+        else:
+            self.nIndex = self.nMax - self.nMin
+            self.output_RandomValue( random.randint( nMin, nMax ) )]]>
+</content>
+                                                                    </script>
+                                                                    <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                                    <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="Generate a random integer." id="2" />
+                                                                    <Output name="output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="The random value obtained." id="3" />
+                                                                    <Parameter name="Min value" inherits_from_parent="0" content_type="1" value="2" default_value="0" min="0" max="1000" tooltip="The minimum value you can get." id="4" />
+                                                                    <Parameter name="Max value" inherits_from_parent="0" content_type="1" value="3" default_value="10" min="0" max="1000" tooltip="The maximum number you can get." id="5" />
+                                                                    <Parameter name="Shuffle" inherits_from_parent="0" content_type="0" value="0" default_value="0" tooltip="When this option is selected the box will give all the numbers between min and&#x0A;max before giving the same number twice." id="6" />
+                                                                </Box>
+                                                                <Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="2" />
+                                                                <Link inputowner="0" indexofinput="3" outputowner="3" indexofoutput="3" />
+                                                            </Diagram>
+                                                        </BehaviorKeyframe>
+                                                    </BehaviorLayer>
+                                                </Timeline>
+                                            </Box>
+                                            <Box name="Interactions GOOD" id="3" localization="8" tooltip="Enter description here" x="620" y="465">
+                                                <bitmap>media/images/box/box-diagram.png</bitmap>
+                                                <script language="4">
+                                                    <content>
+                                                        <![CDATA[]]>
+</content>
+                                                </script>
+                                                <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                <Input name="Interactions GOOD_onStart" type="1" type_size="1" nature="2" inner="0" tooltip="This input has been automatically generated&#x0A;by converting several boxes into a single box." id="2" />
+                                                <Output name="InteractionsGOOD_output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="This output has been automatically generated&#x0A;by converting several boxes into a single box." id="3" />
+                                                <Timeline enable="0">
+                                                    <BehaviorLayer name="behavior_layer1">
+                                                        <BehaviorKeyframe name="keyframe1" index="1">
+                                                            <Diagram>
+                                                                <Box name="Interactions GOOD" id="4" localization="8" tooltip="Generate a random integer between a min number and a max number set as&#x0A;parameters.&#x0A;Note that the min and max numbers are included in the range of possible values." x="620" y="465">
+                                                                    <bitmap>media/images/box/box-script.png</bitmap>
+                                                                    <script language="4">
+                                                                        <content>
+                                                                            <![CDATA[import random
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+
+    def onLoad(self):
+        # attributes needed in shuffle mode
+        self.nMax = 1
+        self.nMin = 0
+        self.nIndex = self.nMax - self.nMin
+        self.aShuffled = []
+
+    def onUnload(self):
+         #puts code for box cleanup here
+        pass
+
+    def onInput_onStart(self):
+        nMax = self.getParameter("Max value")
+        nMin = self.getParameter("Min value")
+        if( nMin > nMax ):
+            temp = nMin
+            nMin = nMax
+            nMax = temp
+        # if shuffle
+        if( self.getParameter("Shuffle") ):
+            self.nIndex += 1
+            if( self.nIndex > self.nMax - self.nMin or nMax != self.nMax or nMin != self.nMin ):
+                self.nMax = nMax
+                self.nMin = nMin
+                self.nIndex = 0
+                self.aShuffled = []
+                for i in range( nMin, nMax + 1 ):
+                    self.aShuffled.insert( random.randint(0, len(self.aShuffled)), i )
+            self.output_RandomValue( self.aShuffled[self.nIndex] )
+        # if not shuffle
+        else:
+            self.nIndex = self.nMax - self.nMin
+            self.output_RandomValue( random.randint( nMin, nMax ) )]]>
+</content>
+                                                                    </script>
+                                                                    <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+                                                                    <Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="Generate a random integer." id="2" />
+                                                                    <Output name="output_RandomValue" type="2" type_size="1" nature="2" inner="0" tooltip="The random value obtained." id="3" />
+                                                                    <Parameter name="Min value" inherits_from_parent="0" content_type="1" value="3" default_value="0" min="0" max="1000" tooltip="The minimum value you can get." id="4" />
+                                                                    <Parameter name="Max value" inherits_from_parent="0" content_type="1" value="3" default_value="10" min="0" max="1000" tooltip="The maximum number you can get." id="5" />
+                                                                    <Parameter name="Shuffle" inherits_from_parent="0" content_type="0" value="0" default_value="0" tooltip="When this option is selected the box will give all the numbers between min and&#x0A;max before giving the same number twice." id="6" />
+                                                                </Box>
+                                                                <Link inputowner="4" indexofinput="2" outputowner="0" indexofoutput="2" />
+                                                                <Link inputowner="0" indexofinput="3" outputowner="4" indexofoutput="3" />
+                                                            </Diagram>
+                                                        </BehaviorKeyframe>
+                                                    </BehaviorLayer>
+                                                </Timeline>
+                                            </Box>
                                             <Link inputowner="18" indexofinput="2" outputowner="0" indexofoutput="2" />
                                             <Link inputowner="1" indexofinput="2" outputowner="18" indexofoutput="3" />
-                                            <Link inputowner="3" indexofinput="2" outputowner="1" indexofoutput="3" />
-                                            <Link inputowner="2" indexofinput="2" outputowner="1" indexofoutput="4" />
-                                            <Link inputowner="3" indexofinput="2" outputowner="1" indexofoutput="5" />
-                                            <Link inputowner="4" indexofinput="2" outputowner="1" indexofoutput="6" />
+                                            <Link inputowner="6" indexofinput="2" outputowner="1" indexofoutput="4" />
+                                            <Link inputowner="2" indexofinput="2" outputowner="1" indexofoutput="5" />
+                                            <Link inputowner="3" indexofinput="2" outputowner="1" indexofoutput="6" />
+                                            <Link inputowner="0" indexofinput="3" outputowner="6" indexofoutput="3" />
                                             <Link inputowner="0" indexofinput="3" outputowner="2" indexofoutput="3" />
                                             <Link inputowner="0" indexofinput="3" outputowner="3" indexofoutput="3" />
-                                            <Link inputowner="0" indexofinput="3" outputowner="4" indexofoutput="3" />
-                                            <Link inputowner="5" indexofinput="2" outputowner="2" indexofoutput="3" />
-                                            <Link inputowner="5" indexofinput="2" outputowner="3" indexofoutput="3" />
-                                            <Link inputowner="5" indexofinput="2" outputowner="4" indexofoutput="3" />
+                                            <Link inputowner="2" indexofinput="2" outputowner="1" indexofoutput="3" />
                                         </Diagram>
                                     </BehaviorKeyframe>
                                 </BehaviorLayer>
